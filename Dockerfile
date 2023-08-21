@@ -407,5 +407,7 @@ USER user
 ENV SHELL /bin/bash
 ENV USER user
 WORKDIR /home/user
+# disable automatic lock screen for KDE https://github.com/selkies-project/docker-nvidia-egl-desktop/issues/28
+RUN kwriteconfig5 --file ~/.config/kscreenlockerrc --group Daemon --key Autolock false
 
 ENTRYPOINT ["/usr/bin/supervisord"]
